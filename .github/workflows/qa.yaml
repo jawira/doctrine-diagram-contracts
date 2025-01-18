@@ -1,0 +1,29 @@
+name: Quality assurance
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  tests:
+    strategy:
+      matrix:
+        php: [ '8.1','8.2','8.3' ]
+    runs-on: ubuntu-24.04
+    steps:
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: phing:v3
+
+      - uses: actions/checkout@v2
+
+      - name: Phing setup
+        run: phing setup
+
+      - name: QA
+        run: phing composer:validate composer:audit php:lint cs:check
