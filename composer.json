@@ -1,0 +1,23 @@
+{
+    "name": "jawira/doctrine-diagram-contracts",
+    "description": "Generic abstractions related to Doctrine Diagram Bundle",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jawira\\DoctrineDiagramContracts\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jawira Portugal",
+            "email": "dev@tugal.be"
+        }
+    ],
+    "require-dev": {
+        "jawira/skeleton": "^2.26"
+    },
+    "require": {
+        "php": ">=8.1"
+    }
+}
