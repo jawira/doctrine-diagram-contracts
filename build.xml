@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jawira/doctrine-diagram-contracts" description="Project description" default="help" phingVersion="3">
+
+  <property name="composer.flags" value="--ansi"/>
+
+
+  <target name="setup" depends="composer:install"/>
+  <target name="qa" depends="composer:validate,composer:audit,php:lint,cs:check"/>
+
+
+  <target name="help">
+    <uptodate property="uptodate.visualizer" srcfile="build.xml" targetfile="build.svg"/>
+    <runtarget target="map"/>
+    <open path="build.svg"/>
+  </target>
+
+  <target name="map" unless="uptodate.visualizer" description="Create buildfile map">
+    <visualizer format="svg"/>
+  </target>
+
+  <target name="cs:fix" description="Fixes code style in src dir.">
+    <exec executable="vendor/bin/php-cs-fixer" passthru="true" checkreturn="true">
+      <arg line="--ansi --no-interaction --allow-risky=yes --verbose"/>
+      <arg value="fix"/>
+      <arg file="src"/>
+    </exec>
+  </target>
+
+  <target name="cs:check" description="Checks if configured files/directories comply with configured rules.">
+    <exec executable="vendor/bin/php-cs-fixer" passthru="true" checkreturn="true">
+      <arg line="--ansi --no-interaction --allow-risky=yes --verbose"/>
+      <arg value="check"/>
+      <arg file="src"/>
+    </exec>
+  </target>
+
+  <target name="composer:install" description="Installs the project dependencies">
+    <exec executable="composer" checkreturn="true" passthru="true">
+      <env key="XDEBUG_MODE" value="off"/>
+      <arg value="install"/>
+      <arg line="--no-interaction --prefer-dist --no-progress --ansi"/>
+      <arg line="${composer.flags}"/>
+    </exec>
+  </target>
+
+  <target name="composer:validate" description="Validates a composer.json and composer.lock">
+    <composer command="validate">
+      <arg value="--strict"/>
+      <arg value="--ansi"/>
+      <arg value="--no-interaction"/>
+    </composer>
+  </target>
+
+  <target name="composer:audit" description="Checks for security vulnerability advisories for installed packages">
+    <composer command="audit">
+      <arg value="--ansi"/>
+      <arg value="--no-interaction"/>
+      <arg value="--no-dev"/>
+      <arg value="--locked"/>
+    </composer>
+  </target>
+
+  <target name="php:lint" description="Check PHP syntax">
+    <phplint haltonfailure="true">
+      <fileset dir="${project.basedir}">
+        <include name="src/**/*.php"/>
+      </fileset>
+    </phplint>
+  </target>
+
+</project>
