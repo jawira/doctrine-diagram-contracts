@@ -12,5 +12,5 @@ interface DiagramGeneratorInterface
      * @param string[] $exclude List of elements to exclude from diagram.
      * @return string PlantUml diagram.
      */
-    public function generateDiagram(string|Size $size, string|Theme $theme, array $exclude): string;
+    public function generatePuml(string|Size $size, string|Theme $theme, array $exclude): string;
 }
