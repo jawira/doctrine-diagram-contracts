@@ -4,13 +4,13 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   tests:
     strategy:
       matrix:
-        php: [ '8.1','8.2','8.3' ]
+        php: [ '8.1','8.2','8.3','8.4' ]
     runs-on: ubuntu-24.04
     steps:
 
@@ -22,8 +22,8 @@ jobs:
 
       - uses: actions/checkout@v2
 
-      - name: Phing setup
-        run: phing setup
+      - name: Install dependencies
+        run: phing composer:install
 
       - name: QA
-        run: phing composer:validate composer:audit php:lint cs:check
+        run: PHP_CS_FIXER_IGNORE_ENV=yes phing composer:validate composer:audit php:lint cs:check
