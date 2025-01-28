@@ -1,7 +1,5 @@
 = doctrine-diagram-contracts
 
-Generic abstractions related to Doctrine Diagram Bundle
+Generic abstractions related to Doctrine Diagram Bundle.
 
-== Phing buildfile
-
-image::./build.svg[]
+<https://packagist.org/packages/jawira/doctrine-diagram-bundle>

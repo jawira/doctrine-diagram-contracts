@@ -1,26 +1,29 @@
 {
   "name": "jawira/doctrine-diagram-contracts",
-  "description": "Generic abstractions related to Doctrine Diagram Bundle",
+  "description": "\ud83d\udcd0 Generic abstractions related to Doctrine Diagram Bundle",
+  "license": "MIT",
   "type": "library",
-  "license": [
-    "MIT"
-  ],
-  "autoload": {
-    "psr-4": {
-      "Jawira\\DoctrineDiagramContracts\\": "src/"
-    }
-  },
   "authors": [
     {
       "name": "Jawira Portugal",
       "email": "dev@tugal.be"
     }
   ],
-  "require-dev": {
-    "jawira/skeleton": "^2.26",
-    "friendsofphp/php-cs-fixer": "^3.68"
-  },
   "require": {
     "php": ">=8.1"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.68",
+    "jawira/skeleton": "^2.26"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jawira\\DoctrineDiagramContracts\\": "src/"
+    }
+  },
+  "config": {
+    "platform-check": true,
+    "preferred-install": "dist",
+    "sort-packages": true
   }
 }
