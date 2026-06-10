@@ -13,4 +13,8 @@ $rules = [
   'switch_case_space' => true,
 ];
 
-return (new \PhpCsFixer\Config())->setRules($rules)->setHideProgress(true)->setIndent('  ');
+return (new \PhpCsFixer\Config())
+  ->setUnsupportedPhpVersionAllowed(true)
+  ->setRules($rules)
+  ->setHideProgress(true)
+  ->setIndent('  ');
