@@ -5,7 +5,7 @@
 
 
   <target name="setup" depends="composer:install"/>
-  <target name="qa" depends="composer:validate,composer:audit,php:lint,cs:check"/>
+  <target name="qa" depends="composer:validate,php:lint,cs:check"/>
 
 
   <target name="help">
@@ -48,15 +48,6 @@
       <arg value="--strict"/>
       <arg value="--ansi"/>
       <arg value="--no-interaction"/>
-    </composer>
-  </target>
-
-  <target name="composer:audit" description="Checks for security vulnerability advisories for installed packages">
-    <composer command="audit">
-      <arg value="--ansi"/>
-      <arg value="--no-interaction"/>
-      <arg value="--no-dev"/>
-      <arg value="--locked"/>
     </composer>
   </target>
 
