@@ -10,7 +10,7 @@ jobs:
   tests:
     strategy:
       matrix:
-        php: [ '8.1','8.2','8.3','8.4' ]
+        php: [ '8.2','8.3','8.4','8.5' ]
     runs-on: ubuntu-24.04
     steps:
 
@@ -20,10 +20,7 @@ jobs:
           php-version: ${{ matrix.php }}
           tools: phing:v3
 
-      - uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: phing composer:install
+      - uses: actions/checkout@v6
 
       - name: QA
-        run: PHP_CS_FIXER_IGNORE_ENV=yes phing composer:validate composer:audit php:lint cs:check
+        run: PHP_CS_FIXER_IGNORE_ENV=yes phing composer:install composer:validate php:lint cs:check
